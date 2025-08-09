@@ -1,0 +1,25 @@
+---
+import Navigation from "./Navigation.astro";
+import Hamburger from "./Hamburger.astro";
+import ThemeIcon from "./ThemeIcon.astro";
+---
+
+<header>
+    <nav>
+        <Hamburger />
+
+        <Navigation />
+
+        <div id="icons">
+            <ThemeIcon />
+        </div>
+    </nav>
+</header>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>

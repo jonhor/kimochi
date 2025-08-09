@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+
+const pageTitle = "Jon Hor";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	Welcome to my personal webpage where you can learn more about me and check
+	out my recent projects.
+
+	<h2>About Me</h2>
+	I am a professional software developer from germany, who recently finished his
+	master's degree in Computer Science at University of Stuttgart.
+
+	<h2>Projects</h2>
+	<ul>
+		<li>Setting up this website with Ansible, Kubernetes and ArgoCD</li>
+		<li>Inventra: An inventory management app built with React Native</li>
+		<li>
+			Party: Browser-based multiplayer minigames built with Vue.js and
+			Rust
+		</li>
+	</ul>
+</BaseLayout>
