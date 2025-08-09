@@ -1,0 +1,28 @@
+---
+# This playbook installs a single-node k3s cluster on a target host.
+# It assumes a non-root user with sudo privileges already exists.
+
+- name: Setup a single-node k3s cluster
+  hosts: personal_vps
+  remote_user: jns
+  become: true
+
+  tasks:
+    - name: Update and upgrade all packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+        autoremove: yes
+      
+    - name: Install k3s with a single-node configuration
+      shell: |
+        curl -sfL https://get.k3s.io | sh -
+      args:
+        creates: /etc/rancher/k3s/k3s.yaml
+
+    - name: Ensure k3s config is readable by the user
+      file:
+        path: /etc/rancher/k3s/k3s.yaml
+        mode: '0644'
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
