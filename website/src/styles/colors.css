@@ -1,0 +1,23 @@
+/* Colors are based on the Catppuccin palettes, refer to https://catppuccin.com/palette/ */
+
+:root {
+    --color-peach: hsl(22deg, 99%, 52%);
+    --color-mauve: hsl(266deg, 85%, 58%);
+    --color-base: hsl(220deg, 23%, 95%);
+    --color-mantle: hsl(220deg, 22%, 92%);
+    --color-crust: hsl(220deg, 21%, 89%);
+    --color-text: hsl(234deg, 16%, 35%);
+
+    --color-bg: var(--color-base);
+}
+
+:root.dark {
+    --color-peach: hsl(23deg, 92%, 75%);
+    --color-mauve: hsl(267deg, 84%, 81%);
+    --color-base: hsl(240deg, 21%, 15%);
+    --color-mantle: hsl(240deg, 21%, 12%);
+    --color-crust: hsl(240deg, 23%, 9%);
+    --color-text: hsl(226deg, 64%, 88%);
+
+    --color-bg: var(--color-base);
+}

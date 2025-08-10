@@ -1,7 +1,11 @@
+@import url("colors.css");
+
 html {
-    background-color: #f1f5f9;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: sans-serif;
 }
+
 
 body {
     margin: 0 auto;
@@ -63,10 +67,10 @@ h1 {
 }
 
 /* themes */
-html.dark {
+/* html.dark {
     background-color: #0d0950;
     color: #fff;
-}
+} */
 
 .dark .nav-links a {
     color: #fff;
