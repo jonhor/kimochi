@@ -1,0 +1,49 @@
+- name: VPS initial setup
+  hosts: all
+  remote_user: root
+  become: true
+
+  vars:
+    new_user: "jns"
+    ssh_public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCk1UkM274M6DyZRdotZ9ADQqwt73ILBC/W1A5NaCfi2ehgJcuKdtDtjx6SMXWxRwlqC40i+CcdhdR6iJaIoEyChBPBRgyMo1FCzZkeh1G2oCZf0GaI3u2vlA0vKHw2dNyRUWEydh64tM41lIm2u66yYSK9BQpbGPLcpGhvfPyKLrdtzV9GbD152LpGVgQuHkQ5dM4+XdGyLLfbpqAgpZkasYfWOfuZsWucUbPq3bi2J9L/u4OUfnL57y3W11bBtDzTcr6p4avgp8fOeCKiMVa5pszw1UYe5RAl9hwdbFbto87tx3gN1g3Nlj6CzQKL70rd0PYFgn4mysDVE80DiWAcDK1Q4DYE7QirqZHWyZTBhpji91qi4snqa8f6FjnoIVEjnhxZ00fjUWIXh2/EpB4Sm6jBXT8K6OrxEF3h7WzFDBj4QkmIAPlLs9PM/m/N306vROFsTcYyeEDMFOeh4an4RHsUkbwIZbSc4bChKVWr4/jurOTfcBKDEII6boxgA1M="
+
+  tasks:
+    - name: Create a new user with sudo privileges and disable root login
+      user:
+        name: "{{ new_user }}"
+        state: present
+        groups: sudo
+        append: true
+        shell: /bin/bash
+        comment: "Ansible-created user"
+      
+    - name: Allow passwordless sudo for the new user
+      copy:
+        dest: "/etc/sudoers.d/{{ new_user }}"
+        content: "{{ new_user }} ALL=(ALL) NOPASSWD:ALL"
+        owner: root
+        group: root
+        mode: '0440'
+
+    - name: Add the SSH public key to the new user
+      authorized_key:
+        user: "{{ new_user }}"
+        state: present
+        key: "{{ ssh_public_key }}"
+
+    - name: Disable SSH password authentication
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+
+    - name: Disable SSH root login
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: 'PermitRootLogin no'
+
+    - name: Restart the SSH service to apply changes
+      service:
+        name: ssh
+        state: restarted
