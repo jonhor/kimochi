@@ -1,13 +1,17 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-issuer
+  name: letsencrypt-{{ .Values.environment }}
 spec:
   acme:
-    email: jonas.horstmann2804@gmail.com
-    server: https://acme-v02.api.letsencrypt.org/directory
+    email: "{{ .Values.email }}"
+    server: {{ if eq .Values.environment "production" -}}
+    "https://acme-v02.api.letsencrypt.org/directory"
+    {{- else -}}
+    "https://acme-staging-v02.api.letsencrypt.org/directory"
+    {{- end }}
     privateKeySecretRef:
-      name: letsencrypt-key
+      name: "letsencrypt-{{ .Values.environment }}-key"
     solvers:
       - http01:
           ingress:

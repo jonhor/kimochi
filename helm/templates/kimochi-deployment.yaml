@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: kimochi-deployment
+  labels:
+    app: kimochi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kimochi
+  template:
+    metadata:
+      labels:
+        app: kimochi
+    spec:
+      containers:
+      - name: kimochi
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+          - containerPort: 80
