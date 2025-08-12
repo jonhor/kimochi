@@ -1,0 +1,15 @@
+---
+import type { MarkdownHeading } from "astro";
+const { headings } = Astro.props;
+console.log(headings);
+---
+
+<div>
+    {
+        headings.map((heading: MarkdownHeading) => (
+            <p>
+                {">".repeat(heading.depth)} {heading.text}
+            </p>
+        ))
+    }
+</div>
