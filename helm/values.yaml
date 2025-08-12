@@ -1,6 +1,5 @@
 environment: staging
 email: "jonas.horstmann2804@gmail.com"
-
 image:
   repository: ghcr.io/jonhor/kimochi
-  tag: latest
+  tag: "latest"
