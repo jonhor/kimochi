@@ -2,4 +2,4 @@ environment: staging
 email: "jonas.horstmann2804@gmail.com"
 image:
   repository: ghcr.io/jonhor/kimochi
-  tag: "latest"
+  tag: "1cba65beaef8404ce82b27eca379af4da0b0c62a"
