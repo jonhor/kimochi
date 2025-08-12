@@ -4,7 +4,7 @@ metadata:
   name: kimochi-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-issuer
-    traefik.ingress.kubernetes.io/router.middlewares: default-https-redirect@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-https-redirect@kubernetescrd
 
 spec:
   ingressClassName: traefik
