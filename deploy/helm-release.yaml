@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kimochi-release
+  namespace: kimochi
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: helm
+      sourceRef:
+        kind: GitRepository
+        name: kimochi-repo
+        namespace: flux-system
+      valuesFiles:
+        - helm/values.yaml
+  values:
+    environment: production

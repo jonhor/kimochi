@@ -48,3 +48,10 @@
           dest: "{{ ansible_user_dir }}/.kube/config"
           owner: "{{ ansible_user_id }}"
           state: link
+
+    - name: Install Flux
+      become: true
+      shell: |
+        curl -s https://fluxcd.io/install.sh | sudo bash
+      args:
+        creates: /usr/local/bin/flux
