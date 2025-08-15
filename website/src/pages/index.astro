@@ -1,12 +1,12 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectPreview from "../components/ProjectPreview.astro";
 import "../styles/global.css";
+import PageLayout from "../layouts/PageLayout.astro";
 
 const pageTitle = "Jonas";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<PageLayout pageTitle={pageTitle}>
 	<h1>Hey, my name is <span class="highlight">Jonas</span>.</h1>
 	I am a professional software developer form germany who recently finished his
 	master's degree in Computer Science at University of Stuttgart. If you want to
@@ -33,7 +33,7 @@ const pageTitle = "Jonas";
 			description="(WIP) Web-based minigames that you can play with your friends directly in the browser. Powered by Vue.js and Rust."
 		/>
 	</div>
-</BaseLayout>
+</PageLayout>
 
 <style>
 	.highlight {

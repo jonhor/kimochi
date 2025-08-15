@@ -1,5 +1,9 @@
 @import url("colors.css");
 
+:root {
+    --max-width: 80ch;
+}
+
 html {
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -8,11 +12,17 @@ html {
 
 
 body {
-    margin: 0 auto;
+    margin: 0;
     width: 100%;
-    max-width: 80ch;
     padding: 1rem;
     line-height: 1.5;
+}
+
+main,
+header {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 * {

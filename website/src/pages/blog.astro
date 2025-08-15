@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
 const allPosts = Object.values(
 	import.meta.glob("./posts/*.md", { eager: true }),
 );
@@ -7,7 +7,7 @@ const allPosts = Object.values(
 const pageTitle = "My Astro Learning Blog";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<PageLayout pageTitle={pageTitle}>
 	<p>This is where I will post about my journey learning Astro.</p>
 	<ul>
 		{
@@ -18,4 +18,4 @@ const pageTitle = "My Astro Learning Blog";
 			))
 		}
 	</ul>
-</BaseLayout>
+</PageLayout>
