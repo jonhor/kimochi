@@ -7,24 +7,102 @@ interface Props {
 
 const { headings } = Astro.props;
 
-const transformed_headings = (() => {
-    const levels = [];
+interface Section {
+    heading: MarkdownHeading;
+    subSections: MarkdownHeading[];
+}
+
+const sections = (() => {
+    const sections: Section[] = [];
 
     for (const heading of headings) {
-        //levels.pop()
-        if (levels.length == 0) {
-            levels.push(heading);
+        if (heading.depth == 2) {
+            sections.push({
+                heading,
+                subSections: [],
+            });
+        } else if (heading.depth == 3) {
+            sections[sections.length - 1].subSections.push(heading);
         }
     }
+
+    return sections;
 })();
 ---
 
-<div>
+<nav class="toc">
+    <ul>
     {
-        headings.map((heading: MarkdownHeading) => (
-            <p>
-                {">".repeat(heading.depth)} {heading.text}
-            </p>
+        (
+        sections.map((section) => (<li><a href={'#' + section.heading.slug}>{section.heading.text}</a></li>
+        <ul>
+            {section.subSections.map((subSection) => (
+                <li><a href={'#' + subSection.slug}>{subSection.text}</a></li>
+            ))}
+        </ul>
         ))
+        )
     }
-</div>
+    </ul>
+</nav>
+
+<script>
+    const sections = document.querySelectorAll("h2, h3");
+    const navLinks = document.querySelectorAll(".toc a");
+
+    const options = {
+        viewport: null,
+        rootMargin: '0px',
+        threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const id = entry.target.id;
+            const link = document.querySelector(`a[href="#${id}"]`);
+            if (!link) return;
+            if (entry.isIntersecting) {
+                navLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }, options);
+
+    sections.forEach((section => {
+        observer.observe(section);
+    }));
+
+</script>
+
+<style>
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    nav > ul {
+        list-style-position: inside;
+        list-style-type: upper-roman;
+        /* list-style-type: circle; */
+        /* list-style-type: none; */
+    }
+    ul > ul {
+        list-style-type: none;
+        border-left: 1px solid var(--color-surface2);
+        margin-left: 1rem;
+        padding-left: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .toc {
+        /* background-color: var(--color-mantle); */
+        /* padding: 1rem; */
+        border-radius: 0.5rem;
+        flex: 1;
+        /* justify-content: center; */
+        /* align-items: center; */
+    }
+    a.active {
+        font-weight: bold;
+    }
+</style>

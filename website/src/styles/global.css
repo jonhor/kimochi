@@ -2,6 +2,7 @@
 
 :root {
     --max-width: 80ch;
+    --mobile-breakpoint: 636px;
 }
 
 html {
@@ -76,6 +77,10 @@ h1 {
     display: unset;
 }
 
+.toc {
+    display: none;
+}
+
 /* themes */
 /* html.dark {
     background-color: #0d0950;
@@ -104,6 +109,12 @@ h1 {
     }
 
     .hamburger {
-        display: none
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .toc {
+        display: block;
     }
 }
