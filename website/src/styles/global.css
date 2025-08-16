@@ -6,7 +6,7 @@
 }
 
 html {
-    background-color: var(--color-bg);
+    background-color: var(--color-base);
     color: var(--color-text);
     font-family: sans-serif;
 }
@@ -33,6 +33,11 @@ header {
 h1 {
     margin: 1rem 0;
     font-size: 2.5rem;
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: none;
 }
 
 /* nav styles */
@@ -65,12 +70,13 @@ h1 {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
-    color: black;
 }
+
 
 .nav-links a:hover,
 .nav-links a:focus {
     text-decoration: underline;
+    color: var(--color-text);
 }
 
 .expanded {
@@ -87,21 +93,23 @@ h1 {
     color: #fff;
 } */
 
-.dark .nav-links a {
+/* .dark .nav-links a {
     color: #fff;
-}
+} */
+
 
 @media screen and (min-width: 636px) {
     .nav-links {
         margin-left: 0em;
         display: block;
-        position: static;
         width: auto;
         background: none;
     }
 
     .nav-links a {
         display: inline-block;
+        /* padding: 0.5rem 1rem;
+        border-radius: 0.5rem; */
     }
 
     .nav-links a:not(:first-child) {

@@ -1,0 +1,18 @@
+---
+import ProjectPreviewList from "../components/ProjectPreviewList.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+const allPosts = Object.values(
+	import.meta.glob("./projects/*.md", { eager: true }),
+);
+
+const pageTitle = "My Astro Learning Blog";
+---
+
+<PageLayout pageTitle={pageTitle}>
+	<p>
+		These are some of the projects I have been working on in my free time
+		ever since finishing my master's thesis.<p></p>
+
+		<ProjectPreviewList />
+	</p>
+</PageLayout>

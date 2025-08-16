@@ -2,6 +2,7 @@
 import ProjectPreview from "../components/ProjectPreview.astro";
 import "../styles/global.css";
 import PageLayout from "../layouts/PageLayout.astro";
+import ProjectPreviewList from "../components/ProjectPreviewList.astro";
 
 const pageTitle = "Jonas";
 ---
@@ -19,20 +20,7 @@ const pageTitle = "Jonas";
 	These are some of the projects I have been working on in my free time ever since
 	finishing my master's thesis.
 
-	<div class="preview-container">
-		<ProjectPreview
-			title="Kimochi"
-			description="My personal website you are visiting right now, built with Astro.js and deployed with Kubernetes, Helm, Github Actions and ArgoCD."
-		/>
-		<ProjectPreview
-			title="Inventra"
-			description="A React Native mobile app, that helps you manage your tool inventory, by scanning QR Codes and quickly assigning tools to projects or checking their status."
-		/>
-		<ProjectPreview
-			title="Party Games"
-			description="(WIP) Web-based minigames that you can play with your friends directly in the browser. Powered by Vue.js and Rust."
-		/>
-	</div>
+	<ProjectPreviewList />
 </PageLayout>
 
 <style>
@@ -45,12 +33,6 @@ const pageTitle = "Jonas";
 		-webkit-text-fill-color: transparent;
 	}
 
-	.preview-container {
-		margin-top: 1.2rem;
-		display: flex;
-		flex-direction: column;
-		gap: 0.8rem;
-	}
 	h2 {
 		font-size: 30px;
 		margin-bottom: 0.4rem;

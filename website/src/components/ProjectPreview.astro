@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-const { title, description } = Astro.props;
+const { title, description, url } = Astro.props;
 ---
 
 {
@@ -10,12 +10,14 @@ const { title, description } = Astro.props;
 */
 }
 
-<div class="outer">
-    <div class="inner">
-        <h2>{title}</h2>
-        <span class="description">{description}</span>
+<a href={url}>
+    <div class="outer">
+        <div class="inner">
+            <h2>{title}</h2>
+            <span class="description">{description}</span>
+        </div>
     </div>
-</div>
+</a>
 
 <style>
     .outer {
@@ -35,7 +37,7 @@ const { title, description } = Astro.props;
     }
     .inner {
         padding: 0.6rem 1.2rem;
-        background-color: var(--color-bg);
+        background-color: var(--color-base);
         border-radius: calc(var(--parent-radius) - var(--parent-padding));
         margin-left: 0rem;
         position: relative;

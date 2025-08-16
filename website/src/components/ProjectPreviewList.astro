@@ -1,0 +1,33 @@
+---
+import ProjectPreview from "./ProjectPreview.astro";
+
+const allPosts = Object.values(
+    import.meta.glob("../pages/projects/*.md", { eager: true }),
+);
+
+allPosts.sort((a, b) =>
+    /* @ts-ignore */
+    a.frontmatter.pubDate.localeCompare(b.frontmatter.pubDate),
+);
+---
+
+<div class="project-preview-list">
+    {
+        allPosts.map((post: any) => (
+            <ProjectPreview
+                title={post.frontmatter.title}
+                description={post.frontmatter.description}
+                url={post.url}
+            />
+        ))
+    }
+</div>
+
+<style>
+    .project-preview-list {
+        margin-top: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+</style>

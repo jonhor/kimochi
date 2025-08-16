@@ -31,8 +31,6 @@
     --color-base: hsl(220deg, 23%, 95%);
     --color-mantle: hsl(220deg, 22%, 92%);
     --color-crust: hsl(220deg, 21%, 89%);
-
-    --color-bg: var(--color-base);
 }
 
 :root.dark {
@@ -67,6 +65,4 @@
     --color-base: hsl(240deg, 21%, 15%);
     --color-mantle: hsl(240deg, 21%, 12%);
     --color-crust: hsl(240deg, 23%, 9%);
-
-    --color-bg: var(--color-base);
 }
