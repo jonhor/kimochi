@@ -8,12 +8,15 @@ import ThemeIcon from "./ThemeIcon.astro";
     <nav>
         <Hamburger />
 
-        <Navigation />
+        <div class="test">
+            <Navigation />
+        </div>
 
         <div id="icons">
             <ThemeIcon />
         </div>
     </nav>
+    <!-- <hr /> -->
 </header>
 
 <style>
@@ -21,5 +24,29 @@ import ThemeIcon from "./ThemeIcon.astro";
         display: flex;
         justify-content: space-between;
         align-items: center;
+        line-height: 0;
+
+        /* background-color: var(--color-text); */
+        /* color: var(--color-base); */
+        /* box-shadow: var(--shadow-md); */
+        /* border: var(--color-text) solid 2px; */
+        border-radius: 1rem;
+        /* padding: 0.4rem 1rem; 0.6rem 1rem; */
+        /* padding-bottom: 0; */
+        margin: 0;
     }
+
+    hr {
+        height: 2px;
+        background-color: var(--color-text);
+    }
+
+    /* nav::after {
+        margin-top: 1rem;
+        display: block;
+        content: "";
+        height: 8px;
+        width: 100%;
+        background-color: var(--color-green);
+    } */
 </style>

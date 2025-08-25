@@ -5,14 +5,21 @@ const allPosts = Object.values(
 	import.meta.glob("./projects/*.md", { eager: true }),
 );
 
-const pageTitle = "My Astro Learning Blog";
+const pageTitle = "Projects";
 ---
 
 <PageLayout pageTitle={pageTitle}>
 	<p>
 		These are some of the projects I have been working on in my free time
-		ever since finishing my master's thesis.<p></p>
-
-		<ProjectPreviewList />
+		ever since finishing my master's thesis.
 	</p>
+	<p>
+		Navigating to the project will bring you to a post that contains
+		additional information and a link to the project repository. These posts
+		are not meant to be comprehensive tutorials, that can be followed but
+		rather a collection of notes and thoughts I had while working on the
+		project. I hope you find them useful.
+	</p>
+
+	<ProjectPreviewList />
 </PageLayout>
