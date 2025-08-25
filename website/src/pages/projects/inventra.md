@@ -4,6 +4,7 @@ title: 'Inventra'
 pubDate: 2025-08-17
 description: 'A React Native mobile app, that helps you manage your tool inventory, by scanning QR Codes and quickly assigning tools to projects or checking their status.'
 author: 'Jonas Horstmann'
+githubProjectName: 'inventra'
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'The Astro logo on a dark background with a pink glow.'

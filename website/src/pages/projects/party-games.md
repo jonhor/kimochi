@@ -3,6 +3,7 @@ layout: '../../layouts/PostLayout.astro'
 title: Party Games
 author: Jonas Horstmann
 pubDate: 2025-08-18
+githubProjectName: 'party-games'
 description: "(WIP) Web-based minigames that you can play with your friends directly in the browser. Powered by Vue.js and Rust"
 image:
     url: "https://docs.astro.build/assets/arc.webp"

@@ -5,18 +5,12 @@ pubDate: 2025-08-16
 description: "My personal website you are visiting right now, built with Astro.js and deployed with Kubernetes, Helm, Github Actions and Flux CD."
 #'Hosting a personal webpage using a modern cloud-native approach.'
 author: 'Jonas Horstmann'
+githubProjectName: 'kimochi'
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'The Astro logo on a dark background with a pink glow.'
 tags: ["astro", "blogging", "learning in public"]
 ---
-
-Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
-
-# Kimochi 
-
-// Goal of this project!
-// getting hands-on experience with the GitOps workflow
 
 ## Provisioning
 
