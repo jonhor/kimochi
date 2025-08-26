@@ -16,7 +16,7 @@ tags: ["astro", "blogging", "learning in public"]
 ## Introduction
 ### React Native
 ### Expo
-// one of the best ways to learn -> write your own components adicdjcklacjalkcjdlcjlajljkdcjlacjkjcdlkdjclakjlc ajc lkjadklcjalkjlkj adjclakjclad cjk
+<!-- // one of the best ways to learn -> write your own components adicdjcklacjalkcjdlcjlajljkdcjlacjkjcdlkdjclakjlc ajc lkjadklcjalkjlkj adjclakjclad cjk -->
 
 ## Components
 ### TabbedView
