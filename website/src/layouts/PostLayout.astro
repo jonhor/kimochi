@@ -1,0 +1,197 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import TableOfContents from "../components/TableOfContents.astro";
+import { Icon } from "astro-icon/components";
+const { frontmatter, headings } = Astro.props;
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+    <div class="layout-wrapper">
+        <div class="nav-container">
+            <TableOfContents headings={headings} />
+        </div>
+
+        <div class="content-container">
+            <main>
+                <!-- <div class="title"> -->
+                <div class="title">
+                    <h1>{frontmatter.title}</h1>
+                    <a class="link" href="https://github.com/jonhor/kimochi">
+                        <Icon name="logo-github" size={28} />
+                        <div class="gh-link">
+                            <span>jonhor</span>
+                            <span>{frontmatter.githubProjectName}</span>
+                        </div>
+                        <!-- <span>kimochi</span> -->
+                    </a>
+                    <!-- <span class="pub-date"
+                        >{
+                            false && frontmatter.pubDate.toString().slice(0, 10)
+                        }</span
+                    > -->
+                </div>
+
+                <p class="description"><em>{frontmatter.description}</em></p>
+                <div class="markdown-content">
+                    <slot />
+                </div>
+            </main>
+        </div>
+        <div class="test"></div>
+    </div>
+</BaseLayout>
+
+<style>
+    .link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.2rem;
+        /* padding-right: 1rem; */
+        /* background-color: var(--color-yellow); */
+        color: var(--color-text);
+        border-radius: 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .link span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0.1rem;
+    }
+
+    .gh-link {
+        /* width: 100px; */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-text);
+        padding: 0rem 1rem;
+        border-radius: 0.6rem;
+    }
+
+    .gh-link span {
+        display: flex;
+        padding: 0;
+        color: var(--color-base);
+    }
+
+    .gh-link span:not(:last-child)::after {
+        /* display: inline-flex; */
+        content: "";
+        flex-grow: 1;
+        align-self: stretch;
+        width: 0.2rem;
+        transform: skew(-25deg);
+        margin: 0 0.8rem;
+        /* padding: 0 0.2rem; */
+        background-color: var(--color-base);
+    }
+</style>
+
+<style>
+    /* Title */
+    .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        margin-top: 1rem;
+        margin-bottom: 0;
+    }
+
+    .title h1 {
+        display: inline-block;
+        font-size: 2.3rem;
+        margin: 0;
+    }
+
+    /* .title h1::after {
+        display: block;
+        position: relative;
+        content: "";
+        height: 4px;
+        width: 100%;
+        bottom: 12px;
+        border-radius: 2px;
+        background-image: var(--bg-gradient-green-sky);
+    } */
+
+    .title .pub-date {
+        font-size: 1rem;
+        color: var(--color-overlay1);
+    }
+
+    .description {
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .layout-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    /*
+    These two elements construct a three-column layout to ensure
+    that the main content remains centered
+    */
+    .nav-container,
+    .layout-wrapper::after {
+        flex-grow: 1;
+        flex-basis: 0;
+        content: "";
+        /* background-color: green; */
+    }
+
+    main {
+        flex-shrink: 0;
+        /* background-color: blue; */
+        margin: 0 2rem;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: flex-end;
+        position: sticky;
+        top: 2rem;
+    }
+</style>
+
+<style is:global>
+    .markdown-content a {
+        /* color: var(--color-peach); */
+        color: var(--color-subtext1);
+        text-decoration: underline;
+    }
+
+    /* .markdown-content a::before {
+        content: "";
+        display: inline-block;
+        background-image: url("../icons/link.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        color: white;
+        width: 1.2rem;
+        height: 1.2rem;
+    }  */
+
+    .markdown-content blockquote {
+        margin: 1.5rem 0;
+        padding-left: 1rem;
+        border-left: 3px solid var(--color-peach);
+        font-style: italic;
+        color: var(--color-subtext0);
+    }
+
+    .markdown-content code {
+        font-size: 1rem;
+        margin: 0 0.1rem;
+    }
+</style>

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kimochi 
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jonhor/kimochi 
+    targetRevision: main
+    path: helm
+    helm:
+      releaseName: kimochi
+      parameters:
+        - name: environment 
+          value: production
+  destination:
+    name: "in-cluster"
+    namespace: kimochi
+  syncPolicy:
+    automated:
+      # Remove resources that are no longer defined in the Helm chart.
+      prune: true

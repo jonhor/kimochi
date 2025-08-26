@@ -1,5 +1,20 @@
+---
+interface Props {
+    activeId: number;
+}
+---
+
 <div class="nav-links">
     <a href="/">Overview</a>
-    <a href="/about/">About Me</a>
-    <a href="/blog/">My Projects</a>
+    <!-- <a href="/about/">About Me</a> -->
+    <a href="/projects/">My Projects</a>
 </div>
+
+<style>
+    a .active {
+        background-color: var(--color-mantle);
+        padding: 1.2rem 0.7rem;
+        border-radius: 0.5rem;
+        /* font-weight: bold; */
+    }
+</style>
