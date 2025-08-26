@@ -4,7 +4,7 @@ metadata:
   name: kimochi-repo
   namespace: flux-system
 spec:
-  interval: 1h
+  interval: 10m
   url: https://github.com/jonhor/kimochi
   ref:
     branch: main

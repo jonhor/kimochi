@@ -4,7 +4,7 @@ metadata:
   name: kimochi-release
   namespace: kimochi
 spec:
-  interval: 1h
+  interval: 10m
   chart:
     spec:
       chart: helm
