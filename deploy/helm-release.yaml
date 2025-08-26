@@ -14,5 +14,6 @@ spec:
         namespace: flux-system
       valuesFiles:
         - helm/values.yaml
+      reconcileStrategy: Revision
   values:
     environment: production
