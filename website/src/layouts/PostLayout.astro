@@ -32,7 +32,9 @@ const { frontmatter, headings } = Astro.props;
                 </div>
 
                 <p class="description"><em>{frontmatter.description}</em></p>
-                <slot />
+                <div class="markdown-content">
+                    <slot />
+                </div>
             </main>
         </div>
         <div class="test"></div>
@@ -109,7 +111,7 @@ const { frontmatter, headings } = Astro.props;
         margin: 0;
     }
 
-    .title h1::after {
+    /* .title h1::after {
         display: block;
         position: relative;
         content: "";
@@ -118,7 +120,7 @@ const { frontmatter, headings } = Astro.props;
         bottom: 12px;
         border-radius: 2px;
         background-image: var(--bg-gradient-green-sky);
-    }
+    } */
 
     .title .pub-date {
         font-size: 1rem;
@@ -159,5 +161,37 @@ const { frontmatter, headings } = Astro.props;
         justify-content: flex-end;
         position: sticky;
         top: 2rem;
+    }
+</style>
+
+<style is:global>
+    .markdown-content a {
+        /* color: var(--color-peach); */
+        color: var(--color-subtext1);
+        text-decoration: underline;
+    }
+
+    /* .markdown-content a::before {
+        content: "";
+        display: inline-block;
+        background-image: url("../icons/link.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        color: white;
+        width: 1.2rem;
+        height: 1.2rem;
+    }  */
+
+    .markdown-content blockquote {
+        margin: 1.5rem 0;
+        padding-left: 1rem;
+        border-left: 3px solid var(--color-peach);
+        font-style: italic;
+        color: var(--color-subtext0);
+    }
+
+    .markdown-content code {
+        font-size: 1rem;
+        margin: 0 0.1rem;
     }
 </style>
